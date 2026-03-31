@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مواعيد القطارات</title>
+</head>
+<body>
+
+<h2>ابحث عن قطار</h2>
+
+<select id="from">
+  <option>القاهرة</option>
+  <option>الإسكندرية</option>
+</select>
+
+<select id="to">
+  <option>طنطا</option>
+  <option>المنصورة</option>
+</select>
+
+<button onclick="search()">عرض النتائج</button>
+
+<table border="1" id="results">
+</table>
+
+<script>
+const trains = [
+  {from:"القاهرة", to:"طنطا", time:"8:00", price:50},
+  {from:"القاهرة", to:"طنطا", time:"10:00", price:60}
+];
+
+function search(){
+  let from = document.getElementById("from").value;
+  let to = document.getElementById("to").value;
+
+  let table = "<tr><th>الميعاد</th><th>السعر</th></tr>";
+
+  trains.forEach(train=>{
+    if(train.from==from && train.to==to){
+      table += `<tr><td>${train.time}</td><td>${train.price}</td></tr>`;
+    }
+  });
+
+  document.getElementById("results").innerHTML = table;
+}
+</script>
+
+</body>
+</html>
